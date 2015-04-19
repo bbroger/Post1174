@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Exemplo 4 - Tratar informações</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="http://malsup.github.io/min/jquery.form.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(function ($) {
+
+            // Quando enviado o formulário
+            $('#formulario').ajaxForm({
+
+                // Antes de enviar o formulário
+                beforeSubmit: function (data, form, options) {
+
+                    // Passando pelos campos do formulário
+                    for (var i = 0; i < data.length; i++) {
+
+                        // Se for o campo nome
+                        if (data[i].name == 'nome') {
+
+                            // Verificamos se possui pelo menos 5 caracteres
+                            if (data[i].value.length < 5) {
+
+                                // Exibindo mensagem
+                                alert('O nome deve ter pelo menos 5 caracteres');
+
+                                // Retornando false para que o plugin não envie o formulário
+                                return false;
+                            }
+                        }
+                    }
+                }
+
+            });
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="col-xs-6">
+
+        <form id="formulario" method="post" action="enviar.php" role="form">
+
+            <legend>Formulário</legend>
+
+            <div class="form-group">
+                <label>Nome</label>
+                <input class="form-control" type="text" name="nome" required autofocus/>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="email" name="email" required/>
+            </div>
+
+            <div class="form-group">
+                <label>Mensagem</label>
+                <textarea class="form-control" name="mensagem" rows="5" required></textarea>
+            </div>
+
+            <input id="enviar" class="btn btn-primary" type="submit" value="Enviar"/>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

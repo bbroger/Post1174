@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Exemplo 5 - Arquivos</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="http://malsup.github.io/min/jquery.form.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(function ($) {
+
+            // Quando enviado o formulário
+            $('#formulario').ajaxForm(function (resposta) {
+                console.log(resposta);
+            });
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="col-xs-6">
+
+        <form id="formulario" method="post" action="upload.php" role="form">
+
+            <legend>Formulário</legend>
+
+            <div class="form-group">
+                <label>Arquivo</label>
+                <input class="form-control" type="file" name="arquivo" />
+            </div>
+
+            <input id="enviar" class="btn btn-primary" type="submit" value="Enviar" />
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
